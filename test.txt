@@ -1,0 +1,36 @@
+namespace SundaysCount
+{
+    class Program
+    {
+static void Main(string[] args)
+        {
+            DateTime Dt1 = Convert.ToDateTime("01/01/1901");
+            
+            for (int j = 0; j < 100; j++)
+            {
+                if(Dt1.Month==1)
+                {
+
+                    DateTime endOfMonth = new DateTime(Dt1.Year, Dt1.Month, DateTime.DaysInMonth(Dt1.Year, Dt1.Month));
+                //get only last day of month
+                int day = endOfMonth.Day;
+
+               
+                int count;
+                count = 0;
+                for (int i = 0; i < day; ++i)
+                {
+                    DateTime d = new DateTime(Dt1.Year, Dt1.Month, i + 1);
+                    //Compare date with sunday
+                    if (d.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        count = count + 1;
+                    }
+                }
+                Console.WriteLine("Number of sundays in January {0}: {1}",Dt1.Year, count );
+                }
+                Dt1 = Dt1.AddYears(1);
+            }  
+}
+}
+}
